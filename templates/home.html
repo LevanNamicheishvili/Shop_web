@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OnlineShop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flash-messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+    <header>
+        <nav>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                </ul>
+                <a href="{{ url_for('register') }}"><button class="sign_up_btn">Sign Up</button></a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ... other HTML code ... -->
+
+    <section class="bookshop">
+        <h2>Welcome to our Clothes Shop!</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae necessitatibus officiis modi totam id voluptatem obcaecati minima! Error ipsum dolore qui laboriosam reprehenderit! Quo, ad laudantium ut repellendus culpa magnam.</p>
+        <!-- Display books or book-related content here -->
+        <div class="api_container">
+            {% for product in products %}
+                <div class="card">
+                    <img src="{{ product.image }}" alt="{{ product.title }}">
+                    <h3>{{ product.title }}</h3>
+                    <p>{{ product.price }}</p>
+                    <p>{{ product.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+</section>
+
+
+
+    <footer>
+        <!-- Your footer content here -->
+    </footer>
+</body>
+</html>
